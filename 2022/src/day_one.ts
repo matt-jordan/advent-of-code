@@ -3,18 +3,18 @@ import * as path from 'path';
 import * as readline from 'readline';
 
 const directory: string = path.resolve();
-const filepath: string = `${directory}/2022/src/input`;
+const filepath: string = `${directory}/2022/src/input-day-one`;
 
 const file = readline.createInterface({
     input: fs.createReadStream(filepath),
 });
 
 let current: number = 0;
-let max: number = -1;
+const calories: number[] = [];
 
 file.on('line', (line: string) => {
     if (line === '') {
-        max = Math.max(current, max);
+        calories.push(current);
         current = 0;
     } else {
         current += Number(line);
@@ -22,5 +22,7 @@ file.on('line', (line: string) => {
 });
 
 file.on('close', () => {
-    console.log(`The most calories an elf has is: ${max}`);
+    calories.sort((a, b) => { return a - b; }).reverse();
+    const top_three: number = calories[0] + calories[1] + calories[2];
+    console.log(`The top three elves are carrying: ${top_three} calories`);
 });
