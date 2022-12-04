@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as readline from 'readline';
 
 const directory: string = path.resolve();
-const filepath: string = `${directory}/2022/src/input-day-two`;
+const filepath: string = `${directory}/2022/src/Dec2/input-day-two`;
 
 const file = readline.createInterface({
     input: fs.createReadStream(filepath),
